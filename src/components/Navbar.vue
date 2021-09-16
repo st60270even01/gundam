@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <header
+  <div>
+    <header
       class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
     >
       <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"
@@ -25,9 +25,29 @@
       />
       <div class="navbar-nav">
         <div class="nav-item text-nowrap">
-          <a class="nav-link px-3" href="#">Sign out</a>
+          <a class="nav-link px-3" href="#" @click.prevent="signout"
+            >Sign out</a
+          >
         </div>
       </div>
     </header>
-    </div>
+  </div>
 </template>
+
+<script>
+export default {
+  name: "Navbar",
+  methods: {
+    signout() {
+      const vm = this;
+      const url = `${process.env.APIPATH}/logout`;
+      this.$http.post(url).then((response) => {
+        console.log(response.data);
+        if (response.data.success) {
+          vm.$router.push("/signin");
+        }
+      });
+    },
+  },
+};
+</script>
