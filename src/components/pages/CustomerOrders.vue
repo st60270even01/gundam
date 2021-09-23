@@ -171,15 +171,17 @@
           <tbody>
             <tr v-for="item in cart.carts" :key="item.id" v-if="cart.carts">
               <td class="align-middle">
-                <button type="button" class="btn btn-outline-danger btn-sm">
+                <button
+                  type="button"
+                  class="btn btn-outline-danger btn-sm"
+                  @click="romoveCartItem(item.id)"
+                >
                   <i class="far fa-trash-alt"></i>
                 </button>
               </td>
               <td class="align-middle">
                 {{ item.product.title }}
-                <!-- <div class="text-success" v-if="item.coupon">
-                  已套用優惠券
-                </div> -->
+                <div class="text-success" v-if="item.coupon">已套用優惠券</div>
               </td>
               <td class="align-middle text-right">
                 {{ item.qty }}
@@ -192,13 +194,123 @@
               <td colspan="3" class="text-right">總計</td>
               <td class="text-right">{{ cart.total }}</td>
             </tr>
-            <!-- <tr v-if="cart.final_total">
+            <tr v-if="cart.final_total !== cart.total">
               <td colspan="3" class="text-right text-success">折扣價</td>
               <td class="text-right text-success">{{ cart.final_total }}</td>
-            </tr> -->
+            </tr>
           </tfoot>
         </table>
+        <div class="input-group mb-3 input-group-sm">
+          <input
+            type="text"
+            class="form-control"
+            v-model="coupon_code"
+            placeholder="請輸入優惠碼"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              @click="addCouponCode"
+            >
+              套用優惠碼
+            </button>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- 建立訂單 -->
+    <div class="my-5 row justify-content-center">
+      <validation-observer class="col-md-6" v-slot="{ invalid }">
+        <form @submit.prevent="createOrder">
+          <validation-provider
+            rules="required|email"
+            v-slot="{ errors, classes }"
+          >
+            <div class="form-group">
+              <!-- 輸入框 -->
+              <label for="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                v-model="form.user.email"
+                class="form-control"
+                :class="classes"
+              />
+              <!-- 錯誤訊息 -->
+              <span class="invalid-feedback">{{ errors[0] }}</span>
+            </div>
+          </validation-provider>
+
+          <validation-provider rules="required" v-slot="{ classes }">
+            <div class="form-group">
+              <!-- 輸入框 -->
+              <label for="username">姓名</label>
+              <input
+                id="username"
+                type="text"
+                name="name"
+                v-model="form.user.name"
+                class="form-control"
+                :class="classes"
+              />
+              <!-- 錯誤訊息 -->
+              <span class="invalid-feedback">此為必填項目</span>
+            </div>
+          </validation-provider>
+
+          <validation-provider rules="required" v-slot="{ classes }">
+            <div class="form-group">
+              <!-- 輸入框 -->
+              <label for="email">收件人電話</label>
+              <input
+                id="usertel"
+                type="tel"
+                v-model="form.user.tel"
+                class="form-control"
+                :class="classes"
+              />
+              <!-- 錯誤訊息 -->
+              <span class="invalid-feedback">此為必填項目</span>
+            </div>
+          </validation-provider>
+
+          <validation-provider rules="required" v-slot="{ classes }">
+            <div class="form-group">
+              <!-- 輸入框 -->
+              <label for="useraddress">收件地址</label>
+              <input
+                id="useraddress"
+                type="text"
+                name="address"
+                v-model="form.user.address"
+                class="form-control"
+                :class="classes"
+              />
+              <!-- 錯誤訊息 -->
+              <span class="invalid-feedback">此為必填項目</span>
+            </div>
+          </validation-provider>
+
+          <div class="form-group">
+            <label for="comment">留言</label>
+            <textarea
+              name=""
+              id="comment"
+              class="form-control"
+              cols="30"
+              rows="10"
+              v-model="form.message"
+            ></textarea>
+          </div>
+
+          <div class="text-right">
+            <button class="btn btn-danger" :disabled="invalid">送出訂單</button>
+          </div>
+        </form>
+      </validation-observer>
     </div>
   </div>
 </template>
@@ -214,8 +326,18 @@ export default {
       status: {
         loadingItem: "",
       },
+      form: {
+        user: {
+          name: "",
+          email: "",
+          tel: "",
+          address: "",
+        },
+        message: "",
+      },
       cart: {},
       pagination: {},
+      coupon_code: "",
     };
   },
   methods: {
@@ -262,6 +384,33 @@ export default {
       this.$http.get(api).then((response) => {
         vm.cart = response.data.data;
         console.log(response);
+      });
+    },
+    romoveCartItem(id) {
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`;
+      const vm = this;
+      this.$http.delete(api).then((response) => {
+        vm.getCart();
+        console.log(response);
+      });
+    },
+    addCouponCode() {
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/coupon`;
+      const vm = this;
+      const coupon = {
+        code: vm.coupon_code,
+      };
+      this.$http.post(api, { data: coupon }).then((response) => {
+        vm.getCart();
+        console.log(response);
+      });
+    },
+    createOrder() {
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order`;
+      const vm = this;
+      const order = vm.form;
+      this.$http.post(api, { data: order }).then((response) => {
+        console.log("訂單已建立", response);
       });
     },
   },
