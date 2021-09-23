@@ -6,6 +6,7 @@ import Login from '@/components/pages/Login'
 import Products from '@/components/pages/Products'
 import Coupons from '@/components/pages/Coupons'
 import CustomerOrder from '@/components/pages/CustomerOrders'
+import CustomerCheckout from '@/components/pages/CustomerCheckout'
 
 Vue.use(Router)
 
@@ -45,11 +46,18 @@ export default new Router({
       path: '/',
       name: 'Dashboard_CustomerOrder',
       component: Dashboard,
-      children: [{
-        path: 'customer_order',
-        name: 'CustomerOrder',
-        component: CustomerOrder,
-      }]
+      children: [
+        {
+          path: 'customer_order',
+          name: 'CustomerOrder',
+          component: CustomerOrder,
+        },
+        {
+          path: 'customer_checkout/:orderId',
+          name: 'CustomerCheckout',
+          component: CustomerCheckout,
+        }
+      ]
     }
   ]
 })
