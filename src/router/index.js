@@ -5,8 +5,12 @@ import Dashboard from '@/components/Dashboard'
 import Login from '@/components/pages/Login'
 import Products from '@/components/pages/Products'
 import Coupons from '@/components/pages/Coupons'
+import Orders from '@/components/pages/Orders'
 import CustomerOrder from '@/components/pages/CustomerOrders'
 import CustomerCheckout from '@/components/pages/CustomerCheckout'
+import Index from '@/components/Index'
+import Home from '@/components/pages/Home'
+import Shop from '@/components/pages/Shop'
 
 Vue.use(Router)
 
@@ -33,6 +37,14 @@ export default new Router({
           },
         },
         {
+          path: 'orders',
+          name: 'Orders',
+          component: Orders,
+          meta: {
+            requiresAuth: true
+          },
+        },
+        {
           path: 'coupons',
           name: 'Coupons',
           component: Coupons,
@@ -46,8 +58,7 @@ export default new Router({
       path: '/',
       name: 'Dashboard_CustomerOrder',
       component: Dashboard,
-      children: [
-        {
+      children: [{
           path: 'customer_order',
           name: 'CustomerOrder',
           component: CustomerOrder,
@@ -58,6 +69,23 @@ export default new Router({
           component: CustomerCheckout,
         }
       ]
-    }
+    },
+    {
+      path: '/index',
+      name: 'Index',
+      component: Index,
+      children: [{
+          path: 'home',
+          name: 'Home',
+          component: Home,
+        },
+        {
+          path: 'shop',
+          name: 'Shop',
+          component: Shop,
+        }
+      ]
+    },
+
   ]
 })
