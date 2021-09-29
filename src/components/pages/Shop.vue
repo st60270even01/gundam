@@ -45,16 +45,16 @@
     <!-- ProductCard -->
     <div class="row mt-4">
       <div
-        class="col-md-6 col-lg-4 mb-4"
+        class="col-md-6 col-lg-4 mb-4 card-deck"
         v-for="item in filterePproducts"
         :key="item.id"
       >
         <div class="card border-0 shadow-sm">
           <div
             style="
-              height: 200px;
+              height: 300px;
               background-size: cover;
-              background-position: center;
+              background-position: top;
             "
             :style="{ backgroundImage: `url(${item.imageUrl})` }"
           ></div>
@@ -74,7 +74,7 @@
                 >原價 {{ item.origin_price }} 元</del
               >
               <div class="h5" v-if="item.price">
-                現在只要 {{ item.price }} 元
+                現在只要 <span class="text-success">{{ item.price }}</span> 元
               </div>
             </div>
           </div>
@@ -92,44 +92,14 @@
       </div>
     </div>
 
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item" :class="{ disabled: !pagination.has_pre }">
-          <a
-            class="page-link"
-            href="#"
-            aria-label="Previous"
-            @click.prevent="getProducts(pagination.current_page - 1)"
-          >
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li
-          class="page-item"
-          v-for="page in pagination.total_pages"
-          :key="page"
-          :class="{ active: pagination.current_page === page }"
-        >
-          <a class="page-link" href="#" @click.prevent="getProducts(page)">{{
-            page
-          }}</a>
-        </li>
-        <li class="page-item" :class="{ disabled: !pagination.has_next }">
-          <a
-            class="page-link"
-            href="#"
-            aria-label="Next"
-            @click.prevent="getProducts(pagination.current_page + 1)"
-          >
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <Pagination :pages="pagination" @emitPages="getProducts"></Pagination>
   </div>
 </template>
 
 <script>
+import $ from "jquery";
+import Pagination from "../Pagination";
+
 export default {
   data() {
     return {
@@ -137,6 +107,9 @@ export default {
       pagination: {},
       category: "all",
     };
+  },
+  components: {
+    Pagination,
   },
   methods: {
     getProducts(page = 1) {

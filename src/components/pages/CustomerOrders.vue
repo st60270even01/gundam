@@ -6,9 +6,9 @@
         <div class="card border-0 shadow-sm">
           <div
             style="
-              height: 150px;
+              height: 220px;
               background-size: cover;
-              background-position: center;
+              background-position: top;
             "
             :style="{ backgroundImage: `url(${item.imageUrl})` }"
           ></div>
@@ -59,41 +59,9 @@
         </div>
       </div>
     </div>
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item" :class="{ disabled: !pagination.has_pre }">
-          <a
-            class="page-link"
-            href="#"
-            aria-label="Previous"
-            @click.prevent="getProducts(pagination.current_page - 1)"
-          >
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li
-          class="page-item"
-          v-for="page in pagination.total_pages"
-          :key="page"
-          :class="{ active: pagination.current_page === page }"
-        >
-          <a class="page-link" href="#" @click.prevent="getProducts(page)">{{
-            page
-          }}</a>
-        </li>
-        <li class="page-item" :class="{ disabled: !pagination.has_next }">
-          <a
-            class="page-link"
-            href="#"
-            aria-label="Next"
-            @click.prevent="getProducts(pagination.current_page + 1)"
-          >
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <!-- productModal -->
+    <!-- Pagination -->
+    <Pagination :pages="pagination" @emitPages="getProducts"></Pagination>
+
     <div
       class="modal fade"
       id="productModal"
@@ -317,6 +285,7 @@
 
 <script>
 import $ from "jquery";
+import Pagination from "../Pagination";
 
 export default {
   data() {
@@ -339,6 +308,9 @@ export default {
       pagination: {},
       coupon_code: "",
     };
+  },
+  components: {
+    Pagination,
   },
   methods: {
     getProducts(page = 1) {
