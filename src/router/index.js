@@ -11,6 +11,7 @@ import CustomerCheckout from '@/components/pages/CustomerCheckout'
 import Index from '@/components/Index'
 import Home from '@/components/pages/Home'
 import Shop from '@/components/pages/Shop'
+import Cart from '@/components/pages/Cart'
 
 Vue.use(Router)
 
@@ -83,6 +84,11 @@ export default new Router({
           path: 'shop',
           name: 'Shop',
           component: Shop,
+        },
+        {
+          path: 'cart',
+          name: 'Cart',
+          component: Cart,
         }
       ]
     },

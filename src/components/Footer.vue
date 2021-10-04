@@ -1,6 +1,6 @@
 <template>
   <div>
-    <footer class="text-muted">
+    <footer class="text-muted fixed-bottom">
       <div class="container">
         <p class="float-right">
           <a href="#">Back to top</a>

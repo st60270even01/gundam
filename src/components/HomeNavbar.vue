@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <router-link class="" to="/index/home"
         ><img src="@/assets/Haro.jpg" width="50px" alt=""
       /></router-link>
@@ -64,9 +64,11 @@
             to="/admin/products"
             >管理員</router-link
           >
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-            購物車
-          </button>
+          <router-link
+            class="btn btn-outline-success my-2 my-sm-0"
+            to="/index/cart"
+            >購物車</router-link
+          >
         </div>
       </div>
     </nav>

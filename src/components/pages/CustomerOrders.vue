@@ -62,6 +62,7 @@
     <!-- Pagination -->
     <Pagination :pages="pagination" @emitPages="getProducts"></Pagination>
 
+    <!-- Modal -->
     <div
       class="modal fade"
       id="productModal"

@@ -1,7 +1,7 @@
 <template>
   <div>
     <HomeNavbar />
-    <main role="main">
+    <main role="main" style="padding: 7rem 0">
       <router-view></router-view>
       <!-- <div class="album py-5 bg-light">
         <div class="container">
