@@ -12,6 +12,7 @@ import Index from '@/components/Index'
 import Home from '@/components/pages/Home'
 import Shop from '@/components/pages/Shop'
 import Cart from '@/components/pages/Cart'
+import Checkout from '@/components/pages/CheckOut'
 
 Vue.use(Router)
 
@@ -89,6 +90,11 @@ export default new Router({
           path: 'cart',
           name: 'Cart',
           component: Cart,
+        },
+        {
+          path: 'checkout',
+          name: 'Checkout',
+          component: Checkout,
         }
       ]
     },

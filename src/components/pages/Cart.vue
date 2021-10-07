@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Progress -->
-    <div class="container my-5">
+    <div class="my-5">
       <div class="progress" style="height: 15px">
         <div
           class="progress-bar"
@@ -62,7 +62,7 @@
           </tfoot>
         </table>
 
-        <div>
+        <div class="col-12">
           <div class="input-group mb-3 input-group-sm">
             <input
               type="text"
@@ -70,10 +70,23 @@
               placeholder="請輸入優惠碼"
             />
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button">
+              <button class="btn btn-outline-danger" type="button">
                 套用優惠碼
               </button>
             </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="d-flex">
+            <router-link class="btn btn-outline-primary btn-sm" to="/index/shop"
+              >繼續選購</router-link
+            >
+            <router-link
+              class="btn btn-outline-success btn-sm ml-auto"
+              to="/index/checkout"
+            >
+              下一步
+            </router-link>
           </div>
         </div>
       </div>

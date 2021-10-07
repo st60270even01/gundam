@@ -59,16 +59,29 @@
           </li>
         </ul>
         <div class="my-2 my-lg-0">
+          <router-link class="btn my-2 my-sm-0" to="/admin/products"
+            ><span style="color: #444"
+              ><i class="fas fa-user-lock fa-2x"></i></span
+          ></router-link>
           <router-link
-            class="btn btn-outline-danger my-2 my-sm-0"
-            to="/admin/products"
-            >管理員</router-link
-          >
-          <router-link
-            class="btn btn-outline-success my-2 my-sm-0"
+            class="btn my-2 my-sm-0 position-relative"
             to="/index/cart"
-            >購物車</router-link
           >
+            <span style="color: #444"
+              ><i class="fas fa-shopping-cart fa-2x"></i></span
+            ><span
+              class="
+                position-absolute
+                top-20
+                start-90
+                translate-middle
+                badge
+                rounded-pill
+                bg-danger
+              "
+              >{{ watchCart }}</span
+            >
+          </router-link>
         </div>
       </div>
     </nav>
@@ -78,5 +91,35 @@
 <script>
 export default {
   name: "HomeNavbar",
+  data() {
+    return {
+      cart: {},
+    };
+  },
+  methods: {
+    getCart() {
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+      const vm = this;
+      this.$http.get(api).then((response) => {
+        vm.cart = response.data.data;
+        console.log("getCart", response);
+      });
+    },
+  },
+  computed: {
+    watchCart() {
+      const vm = this;
+      let cartNum = [];
+      cartNum = this.cart.carts;
+      if (cartNum != undefined && cartNum.length >= 1) {
+        return cartNum.length;
+      } else {
+        return 0;
+      }
+    },
+  },
+  created() {
+    this.getCart();
+  },
 };
 </script>
