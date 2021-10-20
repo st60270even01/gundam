@@ -68,9 +68,14 @@
               type="text"
               class="form-control"
               placeholder="請輸入優惠碼"
+              v-model="coupon_code"
             />
             <div class="input-group-append">
-              <button class="btn btn-outline-danger" type="button">
+              <button
+                class="btn btn-outline-danger"
+                type="button"
+                @click="addCouponCode"
+              >
                 套用優惠碼
               </button>
             </div>
@@ -84,6 +89,7 @@
             <router-link
               class="btn btn-outline-success btn-sm ml-auto"
               to="/index/checkout"
+              v-if="cart.carts.length !== 0"
             >
               下一步
             </router-link>
@@ -98,7 +104,10 @@
 export default {
   data() {
     return {
-      cart: {},
+      cart: {
+        carts: [],
+      },
+      coupon_code: "",
     };
   },
   methods: {
@@ -114,6 +123,17 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`;
       const vm = this;
       this.$http.delete(api).then((response) => {
+        vm.getCart();
+        console.log(response);
+      });
+    },
+    addCouponCode() {
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/coupon`;
+      const vm = this;
+      const coupon = {
+        code: vm.coupon_code,
+      };
+      this.$http.post(api, { data: coupon }).then((response) => {
         vm.getCart();
         console.log(response);
       });

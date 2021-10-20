@@ -17,7 +17,7 @@
 
     <div class="album py-5 bg-light">
       <div class="container">
-        <h3>即將發售</h3>
+        <h3 class="font-weight-bold">即將發售</h3>
 
         <div class="row">
 

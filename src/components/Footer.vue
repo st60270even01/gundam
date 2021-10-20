@@ -5,7 +5,7 @@
         <p class="float-right">
           <a href="#">Back to top</a>
         </p>
-        <p>僅供作品練習，無任何商業用途</p>
+        <p class="text-center">僅供作品練習，無任何商業用途</p>
       </div>
     </footer>
   </div>

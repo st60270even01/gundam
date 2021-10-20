@@ -106,7 +106,7 @@
           </div>
 
           <div class="text-right">
-            <button class="btn btn-danger" :disabled="invalid">結帳</button>
+            <button class="btn btn-danger" :disabled="invalid">前往結帳</button>
           </div>
         </form>
       </validation-observer>
@@ -137,7 +137,7 @@ export default {
       this.$http.post(api, { data: order }).then((response) => {
         console.log("訂單已建立", response);
         if (response.data.success) {
-          vm.$router.push(`/home`);
+          vm.$router.push(`/index/pay/${response.data.orderId}`);
         }
       });
     },

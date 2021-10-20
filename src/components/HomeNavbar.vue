@@ -18,43 +18,20 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item mr-5">
             <router-link class="nav-link" to="/index/home"
-              >GUNDAM <span class="sr-only">(current)</span></router-link
+              ><h5 class="text-primary font-weight-bold">GUNDAM</h5>
+              <span class="sr-only">(current)</span></router-link
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">關於我</a>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/index/shop">商店</router-link>
-          </li>
-          <!-- <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
+            <a class="nav-link" href="#"
+              ><h5 class="font-weight-bold">關於我</h5></a
             >
-              Dropdown分類1
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">分類1</a>
-              <a class="dropdown-item" href="#">分類2</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">分類3</a>
-            </div>
-          </li> -->
+          </li>
           <li class="nav-item">
-            <a
-              class="nav-link disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-              >Disabled</a
+            <router-link class="nav-link" to="/index/shop"
+              ><h5 class="font-weight-bold">商店</h5></router-link
             >
           </li>
         </ul>

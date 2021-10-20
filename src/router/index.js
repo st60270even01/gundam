@@ -13,6 +13,7 @@ import Home from '@/components/pages/Home'
 import Shop from '@/components/pages/Shop'
 import Cart from '@/components/pages/Cart'
 import Checkout from '@/components/pages/CheckOut'
+import Pay from '@/components/pages/Pay'
 
 Vue.use(Router)
 
@@ -95,6 +96,11 @@ export default new Router({
           path: 'checkout',
           name: 'Checkout',
           component: Checkout,
+        },
+        {
+          path: 'pay/:orderId',
+          name: 'Pay',
+          component: Pay,
         }
       ]
     },

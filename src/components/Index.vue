@@ -1,7 +1,7 @@
 <template>
   <div>
     <HomeNavbar />
-    <main role="main" style="padding: 7rem 0">
+    <main role="main" style="padding: 6rem 0">
       <router-view></router-view>
     </main>
     <Footer />

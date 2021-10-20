@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto my-5">
-    <h5 class="my-2">分類</h5>
+    <h3 class="my-2 font-weight-bold">分類</h3>
     <div class="my-2">
       <ul class="nav nav-pills">
         <li class="nav-item">
@@ -136,7 +136,7 @@
             <img :src="product.imageUrl" alt="" class="img-fluid" />
             <blockquote class="blockquote mt-3">
               <p class="mb-0">{{ product.content }}</p>
-              <footer class="blockquote-footer text-right">
+              <footer class="blockquote-footer">
                 {{ product.description }}
               </footer>
             </blockquote>
@@ -147,7 +147,9 @@
               <del class="h6" v-if="product.price !== product.origin_price"
                 >原價 {{ product.origin_price }} 元</del
               >
-              <div class="h5" v-if="product.price">售價 {{ product.price }} 元</div>
+              <div class="h5" v-if="product.price">
+                售價 {{ product.price }} 元
+              </div>
             </div>
             <select name="" class="form-control mt-3" v-model="product.num">
               <option :value="num" v-for="num in 10" :key="num">
@@ -161,7 +163,7 @@
             </div>
             <button
               type="button"
-              class="btn btn-primary"
+              class="btn btn-danger"
               @click="addtoCart(product.id, product.num)"
             >
               加到購物車
@@ -230,6 +232,7 @@ export default {
         console.log(response);
         vm.status.loadingItem = "";
         vm.getCart();
+        $("#productModal").modal("hide");
       });
     },
     getCart() {
