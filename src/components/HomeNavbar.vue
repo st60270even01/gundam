@@ -79,7 +79,7 @@ export default {
       const vm = this;
       this.$http.get(api).then((response) => {
         vm.cart = response.data.data;
-        console.log("getCart", response);
+        console.log(response);
       });
     },
   },
@@ -96,7 +96,12 @@ export default {
     },
   },
   created() {
-    this.getCart();
+    const vm = this;
+    vm.getCart();
+
+    vm.$bus.$on("cart:num", () => {
+      vm.getCart();
+    });
   },
 };
 </script>

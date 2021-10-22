@@ -12,7 +12,16 @@
             >ALL</a
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-for="item in categoryData" :key="item.id">
+          <a
+            class="nav-link"
+            :class="{ active: category == item }"
+            @click="category = item"
+            href="#"
+            >{{ item }}</a
+          >
+        </li>
+        <!-- <li class="nav-item">
           <a
             class="nav-link"
             :class="{ active: category == 'MG' }"
@@ -38,7 +47,7 @@
             href="#"
             >HG</a
           >
-        </li>
+        </li> -->
       </ul>
     </div>
 
@@ -46,7 +55,7 @@
     <div class="row mt-4">
       <div
         class="col-md-6 col-lg-4 mb-4 card-deck"
-        v-for="item in filterePproducts"
+        v-for="item in filterePproducts[current_page]"
         :key="item.id"
       >
         <div class="card border-0 shadow-sm">
@@ -173,39 +182,60 @@
       </div>
     </div>
 
-    <Pagination :pages="pagination" @emitPages="getProducts"></Pagination>
+    <!-- Pagination -->
+    <nav aria-label="..." class="mt-5">
+      <ul class="pagination justify-content-center">
+        <li
+          class="page-item"
+          v-for="page in filterePproducts.length"
+          :class="{ active: current_page === page - 1 }"
+          :key="page.index"
+        >
+          <a
+            class="page-link"
+            href="#"
+            @click.prevent="current_page = page - 1"
+            >{{ page }}</a
+          >
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
 
 <script>
 import $ from "jquery";
-import Pagination from "../Pagination";
 
 export default {
   data() {
     return {
+      allProducts: [],
+      newData: [],
       products: [],
       product: {},
       cart: {},
       status: {
         loadingItem: "",
       },
-      pagination: {},
+      current_page: 0,
       category: "all",
     };
   },
-  components: {
-    Pagination,
-  },
   methods: {
-    getProducts(page = 1) {
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products?page=${page}`;
+    getAll() {
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
       const vm = this;
       console.log(process.env.APIPATH, process.env.CUSTOMPATH);
       this.$http.get(api).then((response) => {
         console.log(response.data);
-        vm.products = response.data.products;
-        vm.pagination = response.data.pagination;
+
+        response.data.products.forEach((item) => {
+          if (item.is_enabled == true) {
+            vm.allProducts.push(item);
+          }
+        });
+
+        // vm.allProducts = response.data.products;
       });
     },
     getProduct(id) {
@@ -233,6 +263,7 @@ export default {
         vm.status.loadingItem = "";
         vm.getCart();
         $("#productModal").modal("hide");
+        vm.$bus.$emit("cart:num");
       });
     },
     getCart() {
@@ -240,28 +271,46 @@ export default {
       const vm = this;
       this.$http.get(api).then((response) => {
         vm.cart = response.data.data;
-        console.log("getCart", response);
+        console.log(response);
       });
     },
   },
   computed: {
+    categoryData() {
+      const vm = this;
+      var result = new Set();
+      var repeat = new Set();
+      vm.allProducts.forEach((item) => {
+        result.has(item.category)
+          ? repeat.add(item.category)
+          : result.add(item.category);
+      });
+      return result;
+    },
     filterePproducts: function () {
       const vm = this;
-      if (vm.category == "all") {
-        return vm.products;
-      } else if (vm.category == vm.category) {
-        var newProducts = [];
-        vm.products.forEach(function (item) {
-          if (item.category == vm.category) {
-            newProducts.push(item);
-          }
-        });
-        return newProducts;
-      }
+      vm.current_page = 0;
+      let tempData = [];
+      vm.newData = [];
+      tempData = vm.allProducts.filter((item) => {
+        if (vm.category === "all") {
+          return vm.allProducts;
+        } else if (vm.category === item.category) {
+          return item;
+        }
+      });
+      tempData.forEach((item, i) => {
+        if (i % 9 == 0) {
+          vm.newData.push([]);
+        }
+        const pagenum = parseInt(i / 9);
+        vm.newData[pagenum].push(item);
+      });
+      return vm.newData;
     },
   },
   created() {
-    this.getProducts();
+    this.getAll();
   },
 };
 </script>
