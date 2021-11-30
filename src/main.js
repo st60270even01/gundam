@@ -3,6 +3,8 @@
 import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 import 'bootstrap';
 import {
   ValidationObserver,
@@ -21,6 +23,8 @@ import currencyFilter from './filters/currency';
 
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
+
+Vue.component('Loading', Loading);
 
 Object.keys(rules).forEach((rule) => {
   extend(rule, rules[rule]);

@@ -1,21 +1,27 @@
 <template>
   <div>
+    <loading :active.sync="isLoading"></loading>
     <!-- Process -->
     <div class="my-5">
+      <div class="d-flex justify-content-around pt-2">
+        <h5 class="">STEP 01</h5>
+        <h5 class="">STEP 02</h5>
+        <h5 class="">STEP 03</h5>
+      </div>
       <div class="progress" style="height: 15px">
         <div
           class="progress-bar"
           role="progressbar"
-          style="width: 100%"
+          style="width: 33%"
           aria-valuenow="25"
           aria-valuemin="0"
           aria-valuemax="100"
         ></div>
       </div>
       <div class="d-flex justify-content-around pt-2">
-        <h5 class="">購物車</h5>
-        <h5 class="">填寫資料</h5>
-        <h5 class="">結帳付款</h5>
+        <h6 class="">購物清單</h6>
+        <h6 class="">填寫資料</h6>
+        <h6 class="">結帳付款</h6>
       </div>
     </div>
 
@@ -85,15 +91,18 @@ export default {
         user: {},
       },
       orderId: "",
+      isLoading: false,
     };
   },
   methods: {
     getOrder() {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order/${vm.orderId}`;
+      vm.isLoading = true;
       this.$http.get(api).then((response) => {
         vm.order = response.data.order;
         console.log(response);
+        vm.isLoading = false;
       });
     },
     payOrder() {
@@ -101,7 +110,8 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/pay/${vm.orderId}`;
       this.$http.post(api).then((response) => {
         console.log(response);
-        if(response.data.success){
+        if (response.data.success) {
+          vm.$bus.$emit("cart:num");
           vm.getOrder();
         }
       });

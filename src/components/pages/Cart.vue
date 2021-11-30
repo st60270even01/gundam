@@ -1,7 +1,13 @@
 <template>
   <div>
+    <loading :active.sync="isLoading"></loading>
     <!-- Progress -->
     <div class="my-5">
+      <div class="d-flex justify-content-around pt-2">
+        <h5 class="">STEP 01</h5>
+        <h5 class="">STEP 02</h5>
+        <h5 class="">STEP 03</h5>
+      </div>
       <div class="progress" style="height: 15px">
         <div
           class="progress-bar"
@@ -13,15 +19,17 @@
         ></div>
       </div>
       <div class="d-flex justify-content-around pt-2">
-        <h5 class="">購物車</h5>
-        <h5 class="">填寫資料</h5>
-        <h5 class="">結帳付款</h5>
+        <h6 class="">購物清單</h6>
+        <h6 class="">填寫資料</h6>
+        <h6 class="">結帳付款</h6>
       </div>
     </div>
 
     <div class="py-5" v-if="cart.carts.length == 0">
       <h2 class="text-center">
-        您的購物車還是空的，快去<router-link class="text-decoration-none font-weight-bold" to="/index/shop"
+        您的購物車還是空的，快去<router-link
+          class="text-decoration-none font-weight-bold"
+          to="/index/shop"
           >選購</router-link
         >吧!
       </h2>
@@ -82,7 +90,7 @@
                 placeholder="請輸入優惠碼"
                 v-model="coupon_code"
               />
-              <div class="input-group-append">
+              <div class="input-group-append" v-if="!coupon_status">
                 <button
                   class="btn btn-outline-danger"
                   type="button"
@@ -96,12 +104,12 @@
           <div class="col-12">
             <div class="d-flex">
               <router-link
-                class="btn btn-outline-primary btn-sm"
+                class="btn btn-outline-secondary btn-sm"
                 to="/index/shop"
                 >繼續選購</router-link
               >
               <router-link
-                class="btn btn-outline-success btn-sm ml-auto"
+                class="btn btn-outline-primary btn-sm ml-auto"
                 to="/index/checkout"
                 v-if="cart.carts.length !== 0"
               >
@@ -123,15 +131,19 @@ export default {
         carts: [],
       },
       coupon_code: "",
+      coupon_status: false,
+      isLoading: false,
     };
   },
   methods: {
     getCart() {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
       const vm = this;
+      vm.isLoading = true;
       this.$http.get(api).then((response) => {
         vm.cart = response.data.data;
         console.log(response);
+        vm.isLoading = false;
       });
     },
     romoveCartItem(id) {
@@ -150,6 +162,7 @@ export default {
         code: vm.coupon_code,
       };
       this.$http.post(api, { data: coupon }).then((response) => {
+        vm.coupon_status = true;
         vm.getCart();
         console.log(response);
       });
