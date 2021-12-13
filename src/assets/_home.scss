@@ -29,8 +29,12 @@ header nav{
   z-index: 10;
 }
 
-.carousel-caption{
+.carousel-caption h1{
   text-shadow: 1px 2px 2px #fff;
+}
+
+.carousel-caption h3{
+  text-shadow: 1px 1px 1px #fff;
 }
 
 /* Declare heights because of positioning of img element */

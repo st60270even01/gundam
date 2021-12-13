@@ -69,6 +69,7 @@
           <div class="container">
             <div class="carousel-caption text-left">
               <h1 class="font-weight-bold text-primary">聖誕節用多肉植物佈置你的家</h1>
+              <h3 class="font-weight-bold text-danger">結帳輸入8888享8折優惠</h3>
             </div>
           </div>
         </div>
