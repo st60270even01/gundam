@@ -63,8 +63,8 @@
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
       </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
+      <div class="carousel-inner carousel-fade">
+        <div class="carousel-item active" data-interval="5000">
           <img src="@/assets/banner_1.png" alt="" />
           <div class="container">
             <div class="carousel-caption text-left">
@@ -76,7 +76,7 @@
             </div>
           </div>
         </div>
-        <div class="carousel-item">
+        <div class="carousel-item" data-interval="5000">
           <img src="@/assets/banner_2.png" alt="" />
           <div class="container">
             <div class="carousel-caption">
@@ -88,7 +88,7 @@
             </div>
           </div>
         </div>
-        <div class="carousel-item">
+        <div class="carousel-item" data-interval="5000">
           <img src="@/assets/banner_3.png" alt="" />
           <div class="container">
             <div class="carousel-caption text-right">

@@ -2,7 +2,7 @@
   <div>
     <loading :active.sync="isLoading"></loading>
     <!-- Progress -->
-    <div class="my-5">
+    <div class="m-5">
       <div class="d-flex justify-content-around pt-2">
         <h5 class="">STEP 01</h5>
         <h5 class="">STEP 02</h5>
@@ -119,6 +119,19 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="m-5">
+      <h4>
+        <ul>
+          <li>不接急單 可接受下面規定再下單</li>
+          <li>植株皆為裸根寄送（不附盆、不附土），避免運送過程壓傷，包裝運送過程可能有徒長、掉葉斷葉或掉粉現象介意者勿下標</li>
+          <li>出貨需要3~5個工作天</li>
+          <li>收件後若植株有問題，請與我們聯絡</li>
+          <li>植株有時會缺貨，若缺貨會退款在包裹裡，不再另行通知</li>
+          <li>缺貨、寄錯、漏寄商品皆直接退款不再補寄!</li>
+        </ul>
+      </h4>
     </div>
   </div>
 </template>

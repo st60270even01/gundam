@@ -27,9 +27,9 @@
       </div>
 
       <!-- ProductCard -->
-      <div class="row mt-4">
+      <div class="row mt-4 justify-content-between">
         <div
-          class="col-md-6 col-lg-4 mb-4 card-deck"
+          class="col-md-6 col-lg-4 my-4 card-deck"
           v-for="item in filterePproducts[current_page]"
           :key="item.id"
         >

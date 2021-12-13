@@ -2,7 +2,7 @@
   <div>
     <loading :active.sync="isLoading"></loading>
     <!-- Process -->
-    <div class="my-5">
+    <div class="m-5">
       <div class="d-flex justify-content-around pt-2">
         <h5 class="">STEP 01</h5>
         <h5 class="">STEP 02</h5>
