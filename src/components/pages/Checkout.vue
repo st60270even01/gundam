@@ -9,9 +9,9 @@
       </div>
       <div class="progress" style="height: 15px">
         <div
-          class="progress-bar"
+          class="progress-bar progress-bar-striped progress-bar-animated"
           role="progressbar"
-          style="width: 33%"
+          style="width: 66%"
           aria-valuenow="25"
           aria-valuemin="0"
           aria-valuemax="100"
@@ -111,7 +111,7 @@
           </div>
 
           <div class="text-right">
-            <button class="btn btn-primary" :disabled="invalid">前往結帳</button>
+            <button class="btn btn-danger" :disabled="invalid">前往結帳</button>
           </div>
         </form>
       </validation-observer>

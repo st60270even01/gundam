@@ -21,6 +21,16 @@ import router from './router';
 import './bus';
 import currencyFilter from './filters/currency';
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+// new Vue({
+//   created() {
+//     AOS.init({});
+//   },
+//   router,
+//   render: h => h(App)
+// }).$mount("#app");
+
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
 
@@ -53,8 +63,12 @@ new Vue({
   components: {
     App
   },
-  template: '<App/>'
-})
+  template: '<App/>',
+  created() {
+    AOS.init({});
+  },router,
+  render: h => h(App)
+}).$mount("#app");
 
 router.beforeEach((to, from, next) => {
   console.log('to', to, 'from', from, 'next', next);

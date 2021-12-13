@@ -10,7 +10,7 @@
       </div>
       <div class="progress" style="height: 15px">
         <div
-          class="progress-bar"
+          class="progress-bar progress-bar-striped progress-bar-animated"
           role="progressbar"
           style="width: 33%"
           aria-valuenow="25"
@@ -28,7 +28,7 @@
     <div class="py-5" v-if="cart.carts.length == 0">
       <h2 class="text-center">
         您的購物車還是空的，快去<router-link
-          class="text-decoration-none font-weight-bold"
+          class="text-decoration-none font-weight-bold text-secondary px-1"
           to="/index/shop"
           >選購</router-link
         >吧!
@@ -104,12 +104,12 @@
           <div class="col-12">
             <div class="d-flex">
               <router-link
-                class="btn btn-outline-secondary btn-sm"
+                class="btn btn-outline-primary btn-sm"
                 to="/index/shop"
                 >繼續選購</router-link
               >
               <router-link
-                class="btn btn-outline-primary btn-sm ml-auto"
+                class="btn btn-outline-danger btn-sm ml-auto"
                 to="/index/checkout"
                 v-if="cart.carts.length !== 0"
               >

@@ -68,23 +68,14 @@
           <img src="@/assets/banner_1.png" alt="" />
           <div class="container">
             <div class="carousel-caption text-left">
-              <h1>Example headline.</h1>
-              <p>
-                Some representative placeholder content for the first slide of
-                the carousel.
-              </p>
+              <h1 class="font-weight-bold text-primary">聖誕節用多肉植物佈置你的家</h1>
             </div>
           </div>
         </div>
         <div class="carousel-item" data-interval="5000">
           <img src="@/assets/banner_2.png" alt="" />
           <div class="container">
-            <div class="carousel-caption">
-              <h1>Another example headline.</h1>
-              <p>
-                Some representative placeholder content for the second slide of
-                the carousel.
-              </p>
+            <div class="carousel-caption">     
             </div>
           </div>
         </div>
@@ -92,33 +83,10 @@
           <img src="@/assets/banner_3.png" alt="" />
           <div class="container">
             <div class="carousel-caption text-right">
-              <h1>One more for good measure.</h1>
-              <p>
-                Some representative placeholder content for the third slide of
-                this carousel.
-              </p>
             </div>
           </div>
         </div>
       </div>
-      <!-- <button
-        class="carousel-control-prev"
-        type="button"
-        data-target="#myCarousel"
-        data-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-target="#myCarousel"
-        data-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </button> -->
     </div>
 
     <!-- Marketing messaging and featurettes
@@ -128,9 +96,9 @@
     <div class="container marketing">
       <!-- Three columns of text below the carousel -->
       <div class="row">
-        <div class="col-lg-4">
-          <img class="img-fluid rounded-circle w-75" src="@/assets/hot_1.jpg" alt="" />
-          <h2 class="py-2">桃太郎</h2>
+        <div class="col-md-4">
+          <img class="img-fluid rounded-circle w-75 m-auto d-block" src="@/assets/hot_1.jpg" alt="" />
+          <h2 class="py-2 text-center">桃太郎</h2>
           <p>
            桃太郎，屬於景天科，最讓人愛不釋手的樣子就是他緊密的蓮座外型，葉面鋪上一層薄薄的細緻白粉，
            整體葉色淺粉綠，葉緣從底部漸層上來的粉紅外框、淡淡的柔柔的，到最頂端一抹討喜的紅尖點，每片葉子規律的生長著，
@@ -139,9 +107,9 @@
           <!-- <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p> -->
         </div>
         <!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-fluid rounded-circle w-75" src="@/assets/hot_2.jpg" alt="" />
-          <h2 class="py-2">石頭玉</h2>
+        <div class="col-md-4">
+          <img class="img-fluid rounded-circle w-75 m-auto d-block" src="@/assets/hot_2.jpg" alt="" />
+          <h2 class="py-2 text-center">石頭玉</h2>
           <p>
             石頭玉，屬於番杏科，生石花屬(或稱石頭草屬)物種的總稱，被喻為「有生命的石頭」。因其形態獨特、色彩斑斕，
             成為很受歡迎的觀賞植物。石頭玉原產非洲南部，若非雨季生長開花,在原產地的礫石中石頭玉是很難被發現的，
@@ -149,9 +117,9 @@
           </p>
         </div>
         <!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-fluid rounded-circle w-75" src="@/assets/hot_3.jpg" alt="" />
-          <h2 class="py-2">兜</h2>
+        <div class="col-md-4">
+          <img class="img-fluid rounded-circle w-75 m-auto d-block" src="@/assets/hot_3.jpg" alt="" />
+          <h2 class="py-2 text-center">兜</h2>
           <p>
             兜其實它是仙人掌科的，但是它的身上卻沒有像仙人掌一樣的刺，在它的葉子上只有白色星狀的絨毛，這種絨毛非常的可愛，
             在它生長的時候身形也是非常的嬌小，所以說它的外形也是非常好看的。
@@ -172,7 +140,7 @@
             適度的給他曬到太陽是很重要的。光照如果不足，可以改採多盆栽輪替的方法維持室內的綠意。
           </p>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5" data-aos="fade-down">
           <img class="img-fluid" src="@/assets/content_1.png" alt="" />
         </div>
       </div>
@@ -190,7 +158,7 @@
            幫助植物進行交換二氧化碳與氧氣的流通。通風時也能加速盆土介質的乾燥，較不易造成爛根，不通風時植株生長會遲緩，且較易滋生病蟲害。
           </p>
         </div>
-        <div class="col-md-5 order-md-1">
+        <div class="col-md-5 order-md-1" data-aos="fade-down">
           <img class="img-fluid" src="@/assets/content_2.png" alt="" />
         </div>
       </div>
@@ -211,7 +179,7 @@
            </ol>
           </p>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5" data-aos="fade-down">
           <img class="img-fluid" src="@/assets/content_3.png" alt="" />
         </div>
       </div>
@@ -228,7 +196,7 @@
            不同的介質也有不同的營養成分與特質，搭配自己的澆水頻率高低也可以調整介質的酥鬆程度。
           </p>
         </div>
-        <div class="col-md-5 order-md-1">
+        <div class="col-md-5 order-md-1" data-aos="fade-down">
          <img class="img-fluid" src="@/assets/content_4.png" alt="" />
         </div>
       </div>

@@ -46,7 +46,8 @@
                   translate-middle
                   badge
                   rounded-pill
-                  bg-success
+                  bg-secondary
+                  text-light
                 "
                 >{{ watchCart }}</span
               >

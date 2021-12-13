@@ -3,22 +3,21 @@
     <table class="table mt-4">
       <thead>
         <tr>
-          <th>購買時間</th>
-          <th>Email</th>
-          <th>購買款項</th>
-          <th>應付金額</th>
-          <th>是否付款</th>
+          <th>編號</th>
+          <th>姓名</th>
+          <th>項目</th>
+          <th>金額</th>
+          <th>付款</th>
         </tr>
       </thead>
       <tbody>
         <tr
           v-for="(item, key) in sortOrder"
           :key="key"
-          v-if="orders.length"
           :class="{ 'text-secondary': !item.is_paid }"
         >
           <td>{{ item.create_at }}</td>
-          <td><span v-text="item.user.email" v-if="item.user"></span></td>
+          <td><span v-text="item.user.name" v-if="item.user"></span></td>
           <td>
             <ul class="list-unstyled">
               <li v-for="(product, i) in item.products" :key="i">

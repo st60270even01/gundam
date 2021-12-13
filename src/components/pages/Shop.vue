@@ -36,14 +36,14 @@
           <div class="card border-0 shadow-sm">
             <div
               style="
-                height: 300px;
+                height: 280px;
                 background-size: cover;
-                background-position: top;
+                background-position: center;
               "
               :style="{ backgroundImage: `url(${item.imageUrl})` }"
             ></div>
             <div class="card-body">
-              <span class="badge badge-secondary float-right ml-2">{{
+              <span class="badge badge-primary float-right ml-2">{{
                 item.category
               }}</span>
               <h5 class="card-title">
@@ -66,7 +66,7 @@
               <div class="d-flex">
                 <button
                   type="button"
-                  class="btn btn-outline-secondary btn-sm"
+                  class="btn btn-outline-primary btn-sm"
                   @click="getProduct(item.id)"
                 >
                   <i

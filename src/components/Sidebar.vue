@@ -42,7 +42,7 @@
             </router-link>
           </li>
         </ul>
-        <h6
+        <!-- <h6
           class="
             sidebar-heading
             d-flex
@@ -58,15 +58,15 @@
           <a class="link-secondary" href="#" aria-label="Add a new report">
             <span data-feather="plus-circle"></span>
           </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
+        </h6> -->
+        <!-- <ul class="nav flex-column mb-2">
           <li class="nav-item">
             <router-link class="nav-link" to="/customer_order">
               <i class="fas fa-shopping-cart"></i>
               模擬訂單
             </router-link>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </nav>
   </div>

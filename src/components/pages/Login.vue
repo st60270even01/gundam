@@ -1,7 +1,7 @@
 <template>
   <div>
     <form class="form-signin" @submit.prevent="signin">
-      <h1 class="h3 mb-3 fw-normal">請先登入</h1>
+      <h1 class="h3 mb-3 fw-normal">管理員登入</h1>
 
       <div class="form-floating">
         <label for="floatingInput">Email address</label>
@@ -32,7 +32,7 @@
       <button class="w-100 btn btn-lg btn-primary" type="submit">
         Sign in
       </button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+      <p class="mt-5 mb-3 text-muted text-center">僅供作品展示，無做任何商業用途</p>
     </form>
   </div>
 </template>

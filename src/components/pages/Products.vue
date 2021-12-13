@@ -27,9 +27,9 @@
           <td class="text-right">
             {{ item.price | currency }}
           </td>
-          <td>
+          <td class="text-right">
             <span v-if="item.is_enabled" class="text-success">啟用</span>
-            <span>未啟用</span>
+            <span v-if="!item.is_enabled" class="text-danger">未啟用</span>
           </td>
           <td>
             <button
@@ -65,7 +65,7 @@
     >
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content border-0">
-          <div class="modal-header bg-dark text-white">
+          <div class="modal-header bg-primary text-white">
             <h5 class="modal-title" id="exampleModalLabel">
               <span>新增產品</span>
             </h5>
@@ -161,7 +161,7 @@
                     />
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="price">售價</label>
+                    <label for="price">售價(必填項目)</label>
                     <input
                       type="number"
                       class="form-control"
@@ -174,7 +174,7 @@
                 <hr />
 
                 <div class="form-group">
-                  <label for="description">產品描述</label>
+                  <label for="description">詳細描述</label>
                   <textarea
                     type="text"
                     class="form-control"
@@ -214,14 +214,14 @@
           <div class="modal-footer">
             <button
               type="button"
-              class="btn btn-outline-secondary"
+              class="btn btn-outline-primary"
               data-dismiss="modal"
             >
               取消
             </button>
             <button
               type="button"
-              class="btn btn-primary"
+              class="btn btn-danger"
               @click="updateProduct"
             >
               確認

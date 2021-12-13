@@ -2,7 +2,7 @@
   <div>
     <loading :active.sync="isLoading"></loading>
     <!-- Process -->
-    <div class="m-5">
+    <div class="m-5" v-if="!order.is_paid">
       <div class="d-flex justify-content-around pt-2">
         <h5 class="">STEP 01</h5>
         <h5 class="">STEP 02</h5>
@@ -10,9 +10,9 @@
       </div>
       <div class="progress" style="height: 15px">
         <div
-          class="progress-bar"
+          class="progress-bar progress-bar-striped progress-bar-animated"
           role="progressbar"
-          style="width: 33%"
+          style="width: 100%"
           aria-valuenow="25"
           aria-valuemin="0"
           aria-valuemax="100"
@@ -24,6 +24,13 @@
         <h6 class="">結帳付款</h6>
       </div>
     </div>
+
+    <!-- paysuccess -->
+    <h5 class="text-center" v-if="order.is_paid">
+      <i class="fas fa-clipboard-check fa-2x m-5 text-secondary center"
+        >付款完成</i
+      >
+    </h5>
 
     <div class="my-5 row justify-content-center">
       <form class="col-md-8" @submit.prevent="payOrder">

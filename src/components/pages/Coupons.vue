@@ -22,7 +22,7 @@
           <td>{{ due_date }}</td>
           <td>
             <span v-if="item.is_enabled === 1" class="text-success">啟用</span>
-            <span v-else class="text-muted">未起用</span>
+            <span v-else class="text-danger">未起用</span>
           </td>
           <td>
             <button
@@ -45,8 +45,8 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <div class="modal-header bg-primary">
+            <h5 class="modal-title text-light" id="exampleModalLabel">優惠券</h5>
             <button
               type="button"
               class="close"
@@ -115,12 +115,12 @@
           <div class="modal-footer">
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-primary"
               data-dismiss="modal"
             >
-              Close
+              取消
             </button>
-            <button type="button" class="btn btn-primary" @click="updateCoupon">
+            <button type="button" class="btn btn-danger" @click="updateCoupon">
               更新優惠券
             </button>
           </div>
